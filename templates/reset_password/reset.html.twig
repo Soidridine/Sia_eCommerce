@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reset your password{% endblock %}
+
+{% block body %}
+
+     {{include("partials/title_section.html.twig", {'name':'Reset Password'})}}
+
+    <div class="login_register_wrap section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-6 col-md-10">
+                    <div class="login_wrap">
+                        <div class="padding_eight_all bg-white">
+                            <div class="heading_s1">
+                                <h3>Reset Password</h3>
+                            </div>
+                            <div class="content">
+                                {{ form_start(resetForm) }}
+                                    {{ form_row(resetForm.plainPassword) }}
+                                    <button class="btn btn-fill-out btn-block">Reset password</button>
+                                {{ form_end(resetForm) }}
+                            </div>
+                            <div class="form-note text-center">Don't Have an Account? <a href="{{ path('app_register')}}">Sign up now</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

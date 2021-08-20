@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cart AliExprass !{% endblock %}
+
+{% block body %}
+
+{{ include("partials/title_section.html.twig", {'name':"Your cart"})}}
+
+{# <div class="container"> #}
+<div class="section">
+	<div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="table-responsive shop_cart_table">
+                	<table class="table">
+                    	<thead>
+                        	<tr>
+                            	<th class="product-thumbnail">&nbsp;</th>
+                                <th class="product-name">Product</th>
+                                <th class="product-price">Price</th>
+                                <th class="product-quantity">Quantity</th>
+                                <th class="product-subtotal">Total</th>
+                                <th class="product-remove">Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {# {% set subtotal = 0 %} #}
+                        	{% for element in cart.products %}
+                                <tr>
+                                    {# {% set subtotal = subtotal + (element.quantity * element.product.price/100) %} #}
+                                    
+                                    <td class="product-thumbnail"><a href="#"><img src="/assets/uploads/products/{{element.product.image}}" alt="{{ element.product.name }}"></a></td>
+                                    <td class="product-name" data-title="Product"><a href="#">{{ element.product.name }}</a></td>
+                                    <td class="product-price" data-title="Price">${{ element.product.price/100 }}</td>
+                                    <td class="product-quantity" data-title="Quantity">
+                                        <div class="quantity">
+                                            <a href="{{ path('cart_delete', {'id': element.product.id}) }}" type="button" value="-" class="minus"> - </a>
+                                            <input type="text" name="quantity" value="{{ element.quantity }}" title="Qty" class="qty" size="4">
+                                            <a href="{{ path('cart_add', {'id': element.product.id}) }}" type="button" value="+" class="plus">+</a>
+                                        </div>
+                                    </td>
+                                    <td class="product-subtotal" data-title="Total">${{ element.quantity * element.product.price/100 }}</td>
+                                    <td class="product-remove" data-title="Remove"><a href="{{ path('cart_delete_all', {'id': element.product.id})}}"><i class="ti-close"></i></a></td>
+                                </tr>
+                            {% endfor %}
+                          
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            	<th class="product-thumbnail">&nbsp;</th>
+                                <th class="product-name">Product</th>
+                                <th class="product-price">Price</th>
+                                <th class="product-quantity">Quantity</th>
+                                <th class="product-subtotal">Total</th>
+                                <th class="product-remove">Remove</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+            	<div class="medium_divider"></div>
+            	<div class="divider center_icon"><i class="ti-shopping-cart-full"></i></div>
+            	<div class="medium_divider"></div>
+            </div>
+        </div>
+        <div class="row">
+        	  <div class="col-md-6">
+
+
+            </div>
+            <div class="col-md-6">
+            	<div class="border p-3 p-md-4">
+                    <div class="heading_s1 mb-3">
+                        <h6>Cart Totals</h6>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td class="cart_total_label">Cart Subtotal HT</td>
+                                    <td class="cart_total_amount">${{ cart.data.subTotalHT }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="cart_total_label">Taxe (20%)</td>
+                                    <td class="cart_total_amount">${{ cart.data.taxe }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="cart_total_label">Total TTC</td>
+                                    <td class="cart_total_amount"><strong>${{ cart.data.subtotalTTC }}</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <a href="{{ path('checkout') }}" class="btn btn-fill-out">Proceed To CheckOut</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# </div> #}
+{% endblock %}

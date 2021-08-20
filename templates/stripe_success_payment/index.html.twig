@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Order Completed !{% endblock %}
+
+{% block body %}
+
+   {{ include("partials/title_section.html.twig", {'name': 'Order Completed'}) }}
+
+   <div class="section checkout">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="text-center order_complete">
+                        <i class="fas fa-check-circle"></i>
+                        <div class="heading_s1">
+                        <h3>Think you {{ order.user.firstname }} {{ order.user.lastname }}. Payment made successfully !</h3>
+                        <div class="">
+                            <div>Payment for order number <strong>{{ order.reference }}</strong>  has been accepted.</div>
+                            <div>Your payment is currently “pending verification”.
+                                Payments are usually verified within 1 hour.
+                                After verification, the seller begins to process your order.
+                                During this lapse of time, you will not be able to change your order.</div>
+                            <div>
+                            <div>Thank you for your order! Your order is being processed and will be completed within 3-6 hours. You will receive an email confirmation when your order is completed.</div>
+                            <a href="{{ path('home')}}" class="btn btn-fill-out">Continue Shopping</a>
+                            </div>
+                        </div>
+                        <div >
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

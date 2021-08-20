@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Contact{% endblock %}
+
+{% block body %}
+    {{ include("partials/title_section.html.twig", {'name': 'Contact Us' })}}
+    
+    <div class="container">
+        {{ include('contact/_form.html.twig') }}
+    </div>
+{% endblock %}

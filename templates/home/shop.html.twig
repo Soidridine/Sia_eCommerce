@@ -1,0 +1,38 @@
+{% extends 'base.html.twig'%}
+
+{% block title %} AliExprass shopping ! {% endblock %}
+
+{% block body %}
+{{ include("partials/title_section.html.twig", {'name':'Shop'})}}
+
+<div class="section">
+	<div class="container">
+    	<div class="row">
+			<div class="col-lg-9">
+                <div class="row shop_container">
+                    {% for product in products %}
+                        {{ include("partials/product.html.twig", {'product': product })}}
+                    {% endfor %}
+                </div>
+        	</div>
+          <div class="col-lg-3 order-lg-first mt-4 pt-2 mt-lg-0 pt-lg-0">
+            	<div class="sidebar">
+                	<div class="widget">
+                        <h5 class="widget_title">Categories</h5>
+
+                    </div>
+                    <div class="widget">
+                    	<h5 class="widget_title">Price</h5>
+
+                    </div>
+                    <div class="widget">
+                    	<h5 class="widget_title">Tags</h5>
+
+                    </div>
+                    <button class="btn btn-border-fill btn-block"> Search</button>
+                </div>
+          </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}
